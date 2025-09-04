@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karim Hazem | All Projects</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3B82F6",
+              dark: "#1E293B",
+              darker: "#0F172A",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .gradient-text {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .tech-icon {
+        transition: all 0.3s ease;
+      }
+      .tech-icon:hover {
+        transform: scale(1.2);
+      }
+
+      .mobile-timeline {
+        position: relative;
+        padding-left: 35px;
+      }
+      .mobile-timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: #3b82f6;
+      }
+      .mobile-timeline-item {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .mobile-timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -30px;
+        top: 15px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #3b82f6;
+        z-index: 1;
+      }
+      .mobile-timeline-item:last-child {
+        margin-bottom: 0;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .timeline-dot {
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+      .typing-animation {
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+      }
+      .gradient-text {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: gradientShift 5s ease infinite;
+        background-size: 200% 200%;
+        background-image: linear-gradient(
+          to right,
+          #6366f1,
+          #8b5cf6,
+          #ec4899,
+          #8b5cf6,
+          #6366f1
+        );
+      }
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .project-card {
+        transition: all 0.3s ease;
+      }
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .project-card:hover img {
+        transform: scale(1.05);
+      }
+      .project-card img {
+        transition: transform 0.5s ease;
+      }
+      .project-card:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transform: translateY(-10px);
+      }
+
+      .project-card:not(:hover) {
+        transition: all 0.3s ease;
+      }
+
+      .project-card-container:hover .project-card:not(:hover) {
+        transform: translateY(5px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <header
+      class="fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-md z-50 shadow-sm"
+    >
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <div class="text-2xl font-bold gradient-text" data-aos="fade-right">
+            Karim Hazem
+          </div>
+        </div>
+
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="index.html"
+            class="text-gray-800 dark:text-white hover:text-primary dark:hover:text-blue-400 transition-colors"
+            >Home</a
+          >
+          <!-- <a href="#about" class="hover:text-primary transition">About</a> -->
+          <a
+            href="projects.html"
+            class="text-primary dark:text-primary font-medium"
+            >Projects</a
+          >
+        </nav>
+
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-full hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700 transition"
+        >
+          <i data-feather="sun" class="hidden dark:block"></i>
+          <i data-feather="moon" class="dark:hidden"></i>
+        </button>
+
+        <button
+          class="md:hidden p-2 rounded-full dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+          id="mobile-menu-button"
+        >
+          <i data-feather="menu"></i>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white dark:bg-dark shadow-lg"
+      >
+        <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+          <a href="./index.html" class="hover:text-primary transition">Home</a>
+          <a
+            href="./projects.html"
+            class="text-primary dark:text-purple-400 font-medium"
+            >Projects</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-40">
+        <div class="container mx-auto px-6">
+          <h1
+            class="text-4xl font-bold text-center mb-4 dark:text-white"
+            data-aos="fade-up"
+          >
+            My <span class="gradient-text">Projects</span>
+          </h1>
+          <p
+            class="text-lg text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto mb-16"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Here's a collection of my recent work. Each project represents
+            unique challenges and solutions.
+          </p>
+
+          <div
+            class="project-card-container grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <div
+              class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+              data-aos="fade-up"
+            >
+              <div
+                class="image-container h-48 bg-gradient-to-r from-blue-500 to-purple-500"
+              >
+                <img
+                  src="./images/TechEdu.png"
+                  alt="TechEdu Platform"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 dark:text-white">
+                  TechEdu Platform
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  The platform aims to bridge the gap between educators and learners by providing a comprehensive suite of tools and resources.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full"
+                    >React</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full"
+                    >Node</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full"
+                    >Express</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded-full"
+                    >MongoDB</span
+                  >
+                </div>
+                <div class="flex space-x-3">
+                  <a
+                    href="#"
+                    class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                    Live Demo
+                  </a>
+                  <a
+                    href="#"
+                    class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div
+                class="image-container h-48 bg-gradient-to-r from-blue-500 to-purple-500"
+              >
+                <img
+                  src="./images/Audio Library.png"
+                  alt="Audio"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 dark:text-white">
+                A Backend Audio Library App
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                   This app allows users to upload and manage audiobooks, lectures, or podcasts — complete with authentication, role-based access, file uploads, and audio streaming.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full"
+                    >Node</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded-full"
+                    >Express</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full"
+                    >Mongodb</span
+                  >
+                </div>
+                <div class="flex space-x-3">
+                  <!-- <a
+                    href="#"
+                    class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                    Live Demo
+                  </a> -->
+                  <a
+                    href="https://github.com/KarimHazem186/The_First_Project_Backend_NTI"
+                    class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div
+                class="image-container h-48 bg-gradient-to-r from-blue-500 to-purple-500"
+              >
+                <img
+                  src="./images/AI.webp"
+                  alt="AI"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 dark:text-white">
+                  AI – Huawei Academy 
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  This course helps me learn the basics of Artificial Intelligence using Python, math, data analysis, machine learning, and deep learning. 
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full"
+                    >AI</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full"
+                    >ML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 text-xs rounded-full"
+                    >DL</span
+                  >
+                </div>
+                <div class="flex space-x-3">
+                  <!-- <a
+                    href="#"
+                    class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                    Live Demo
+                  </a> -->
+                  <a
+                    href="https://github.com/KarimHazem186/AI-Huawei-Course"
+                    target="_blank"
+                    class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div
+                class="image-container h-48 bg-gradient-to-r from-blue-500 to-purple-500"
+              >
+                <img
+                  src="./images/Amazon.png"
+                  alt="E-Commerce Amazon"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 dark:text-white">
+                  E-Commerce Web App Like Amazon                
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  Developing a web app that aims to enhance the buying and selling process, akin to Amazon, is an exciting venture.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full"
+                    >React</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full"
+                    >Nodejs</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded-full"
+                    >Mongodb</span
+                  >
+                </div>
+                <div class="flex space-x-3">
+                  <a
+                    href="#"
+                    class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/KarimHazem186/E-Commerce-web-App-Like-Amazon"
+                    target="_blank"
+                    class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition-all duration-300"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div
+                class="h-48 bg-gradient-to-r from-primary to-purple-500 flex items-center justify-center"
+              >
+                <img
+                  src="./images/Clothing Website.png"
+                  alt="Clothing Website"
+                  class="w-full h-48 object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 dark:text-white">
+                  Online Clothing Website
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                   Website to aim to enhance the clothing buying and selling process. By designing it to be user-friendly, you are ensuring a positive experience for both buyers and sellers.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-xs rounded-full"
+                    >JS</span
+                  >
+                </div>
+
+                <div class="flex space-x-3">
+                  <a
+                    href="#"
+                    class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center transition-colors"
+                  >
+                    <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/KarimHazem186/Online-Clothing-Website"
+                    target="_blank"
+                    class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 flex items-center transition-colors"
+                  >
+                    <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div
+                class="image-container h-48 bg-gradient-to-r from-blue-500 to-purple-500"
+              >
+                <img
+                  src="./images/Oriental Weavers.png"
+                  alt="The Oriental Weavers"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 dark:text-white">
+                  The Oriental Weavers
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  A website to improve Carpet operations buying and selling. I designed it to be easy to deals with users.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 text-xs rounded-full"
+                    >JS</span
+                  >
+                </div>
+                <div class="flex space-x-3">
+                  <a
+                    href="#"
+                    class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="external-link" class="w-4 h-4 mr-1"></i>
+                    Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/KarimHazem186/The-Oriental-Weaver-Project"
+                    target="_blank"
+                    class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-300 flex items-center transition-colors duration-300"
+                  >
+                    <i data-feather="github" class="w-4 h-4 mr-1"></i>
+                    Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-16">
+            <div class="flex space-x-4">
+              <button
+                class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+              >
+                1
+              </button>
+              <button
+                class="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-105"
+              >
+                2
+              </button>
+              <button
+                class="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-105"
+              >
+                3
+              </button>
+              <button
+                class="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-105"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-dark text-gray-300 py-12">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-12">
+          <div>
+            <h3 class="text-xl font-bold mb-2">Karim Hazem</h3>
+            <p class="text-sm leading-relaxed">
+              Full-Stack Developer & UI/UX Enthusiast crafting digital
+              experiences with modern technologies and innovative solutions.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+
+            <div class="flex gap-12 text-sm">
+              <ul class="space-y-2">
+                <li>
+                  <a href="#home" class="hover:text-blue-500 transition"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a href="#about" class="hover:text-blue-500 transition"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a href="#skills" class="hover:text-blue-500 transition"
+                    >Skills</a
+                  >
+                </li>
+                <li>
+                  <a href="#projects" class="hover:text-blue-500 transition"
+                    >Projects</a
+                  >
+                </li>
+              </ul>
+
+              <!-- Column 2 -->
+              <ul class="space-y-2">
+                <li>
+                  <a href="#services" class="hover:text-blue-500 transition"
+                    >Services</a
+                  >
+                </li>
+                <li>
+                  <a href="#education" class="hover:text-blue-500 transition"
+                    >Education</a
+                  >
+                </li>
+                <li>
+                  <a href="#experience" class="hover:text-blue-500 transition"
+                    >Experience</a
+                  >
+                </li>
+                <li>
+                  <a href="#contact" class="hover:text-blue-500 transition"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Connect</h4>
+            <div class="flex space-x-4 mb-4">
+              <a
+                href="#"
+                class="w-9 h-9 rounded-full bg-gray-700 flex items-center justify-center hover:bg-blue-500 transition"
+              >
+                <i data-feather="github" class="w-4 h-4"></i>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-full bg-gray-700 flex items-center justify-center hover:bg-blue-500 transition"
+              >
+                <i data-feather="linkedin" class="w-4 h-4"></i>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-full bg-gray-700 flex items-center justify-center hover:bg-blue-500 transition"
+              >
+                <i data-feather="twitter" class="w-4 h-4"></i>
+              </a>
+              <a
+                href="#"
+                class="w-9 h-9 rounded-full bg-gray-700 flex items-center justify-center hover:bg-blue-500 transition"
+              >
+                <i data-feather="instagram" class="w-4 h-4"></i>
+              </a>
+            </div>
+            <p class="text-sm">karim.hazem@example.com</p>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 mt-12 pt-6 text-center text-sm">
+          <p>
+            &copy; <span id="year"></span> Karim Hazem. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const name = "Karim Hazem";
+        const title = "Full Stack Developer & UI/UX Designer";
+        const description =
+          "I build exceptional digital experiences with modern technologies. Bachelor's degree in Computer Science with expertise in MERN/MEAN stacks, Machine Learning, and beautiful interfaces.";
+
+        // Animate name
+        let i = 0;
+        const nameInterval = setInterval(() => {
+          document.getElementById("animated-name").textContent += name[i];
+          i++;
+          if (i >= name.length) {
+            clearInterval(nameInterval);
+            animateTitle();
+          }
+        }, 100);
+
+        function animateTitle() {
+          let j = 0;
+          const titleInterval = setInterval(() => {
+            document.getElementById("animated-title").textContent += title[j];
+            j++;
+            if (j >= title.length) {
+              clearInterval(titleInterval);
+              animateDescription();
+            }
+          }, 50);
+        }
+
+        function animateDescription() {
+          let k = 0;
+          const descInterval = setInterval(() => {
+            document.getElementById("animated-description").textContent +=
+              description[k];
+            k++;
+            if (k >= description.length) {
+              clearInterval(descInterval);
+            }
+          }, 20);
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        feather.replace();
+
+        anime({
+          targets: "#name",
+          scale: [1, 1.1, 1],
+          rotate: [0, 5, -5, 0],
+          duration: 2000,
+          loop: true,
+          easing: "easeInOutSine",
+        });
+
+        const colors = ["#6366F1", "#8B5CF6", "#EC4899"];
+        for (let i = 0; i < 30; i++) {
+          const particle = document.createElement("div");
+          particle.style.position = "absolute";
+          particle.style.width = Math.random() * 15 + 5 + "px";
+          particle.style.height = particle.style.width;
+          particle.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+          particle.style.borderRadius = "50%";
+          particle.style.opacity = Math.random() * 0.5 + 0.1;
+          particle.style.top = Math.random() * 100 + "vh";
+          particle.style.left = Math.random() * 100 + "vw";
+          document.body.appendChild(particle);
+
+          anime({
+            targets: particle,
+            translateX: () => anime.random(-100, 100),
+            translateY: () => anime.random(-100, 100),
+            duration: () => anime.random(5000, 15000),
+            easing: "easeInOutQuad",
+            direction: "alternate",
+            loop: true,
+          });
+        }
+      });
+
+      const themeToggle = document.getElementById("theme-toggle");
+      const html = document.documentElement;
+
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        html.classList.add("dark");
+      } else {
+        html.classList.remove("dark");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        html.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          html.classList.contains("dark") ? "dark" : "light"
+        );
+      });
+
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      feather.replace();
+    </script>
+  </body>
+</html>
